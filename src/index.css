@@ -1,0 +1,249 @@
+.app-main {
+  min-height: calc(100vh - 100px);
+}
+:root {
+  --primary-color: linear-gradient(#e7463f, #ef8439);
+  --secondary-color: linear-gradient(
+        to bottom right,
+        rgba(231, 70, 63, 0.2) 0%,
+        rgba(239, 132, 57, 0.2) 50%
+      )
+      bottom right / 50% 50% no-repeat,
+    linear-gradient(
+        to bottom left,
+        rgba(231, 70, 63, 0.2) 0%,
+        rgba(239, 132, 57, 0.2) 50%
+      )
+      bottom left / 50% 50% no-repeat,
+    linear-gradient(
+        to top left,
+        rgba(231, 70, 63, 0.2) 0%,
+        rgba(239, 132, 57, 0.2) 50%
+      )
+      top left / 50% 50% no-repeat,
+    linear-gradient(
+        to top right,
+        rgba(231, 70, 63, 0.2) 0%,
+        rgba(239, 132, 57, 0.2) 50%
+      )
+      top right / 50% 50% no-repeat;
+  --border-button: 0px solid #179e8f;
+  --button-radius: 3.2rem;
+  --input-border-radius: 0.8rem;
+  --input-border: 1px solid #dcdbdb;
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+
+html {
+  /* 62.5% of 16px = 10px */
+  font-size: 10px !important;
+}
+
+@font-face {
+  font-family: 'helvetica';
+  src: url('https://candyfonts.com/wp-data/2018/10/26/11538/HELR45W.ttf')
+      format('woff'),
+    url('https://candyfonts.com/wp-data/2018/10/26/11538/HELR45W.ttf')
+      format('opentype'),
+    url('https://candyfonts.com/wp-data/2018/10/26/11538/HELR45W.ttf')
+      format('truetype');
+}
+body {
+  font-family: 'helvetica';
+  font-size: 1.8rem;
+  background: #fafbfa;
+  font-weight: 400;
+}
+h1 {
+  font-size: 1.8rem;
+}
+h2 {
+  font-size: 1.6rem;
+}
+
+.logo-img {
+  margin-bottom: 8rem;
+  text-align: center;
+}
+.front-margin-top {
+  margin-top: 7rem;
+}
+.login__heading {
+  margin-bottom: 4rem;
+  text-align: center;
+}
+.form-control {
+  border: var(--input-border);
+  border-radius: var(--input-border-radius);
+}
+.input-feild {
+  padding: 1.2rem 4.5rem;
+  font-size: 1.3rem;
+  color: #000;
+}
+.input-with-icon {
+  position: relative;
+}
+
+.input-with-icon .icon-svg {
+  position: absolute;
+  top: 50%;
+  left: 17px;
+  transform: translateY(-50%);
+}
+.input-with-icon input::placeholder {
+  color: #000;
+}
+
+.form-check-input[type='checkbox'] {
+  border-radius: 0;
+  font-weight: 900;
+  border: 1px solid #e9513e;
+}
+.input-table-feild[type='checkbox'] {
+  border-radius: 0.4rem;
+  font-weight: 900;
+  border: 1px solid #e9513e;
+}
+
+.form-check {
+  padding-left: 4rem;
+}
+.check-label {
+  padding-left: 1.6rem;
+  font-size: 1.3rem;
+}
+
+.input-table-feild[type='checkbox']:checked {
+  background-color: var(--primary-color);
+  border: var(--primary-color);
+}
+.form-check-input[type='checkbox']:checked {
+  background-color: #e84d3e;
+  border: #e84d3e;
+}
+.form-button {
+  background: var(--primary-color);
+  border: 0;
+  border-radius: var(--button-radius);
+  color: #fff;
+  padding: 0.8rem;
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+@media screen and (min-width: 768px) {
+  .carton-img {
+    margin-top: 18rem;
+    align-self: flex-end;
+  }
+}
+
+.header__color {
+  border-right: 0.5px solid #e2e2e2;
+  background: #fff;
+  padding: 2rem;
+}
+@media (min-width: 768px) and (max-width: 1530px) {
+  .side-container {
+    padding: 0 7rem;
+  }
+}
+.side-container {
+  padding-top: 4rem;
+}
+
+.logout-button {
+  border-radius: 1.6rem;
+  border: 1px solid #e9513e;
+  background: #fff;
+  color: #e9513e;
+  font-size: 1.3rem;
+  font-weight: 700;
+  padding: 0.1rem 1.3rem;
+  margin-right: 2rem;
+}
+.save-button {
+  background: var(--primary-color);
+  border: 0;
+  border-radius: 1.6rem;
+  color: #fff;
+  padding: 0.5rem 1.6rem;
+  font-size: 1.3rem;
+  font-weight: 700;
+}
+
+.form-change {
+  background: #fff;
+  height: 100%;
+  padding: 3rem;
+  margin-top: 4rem;
+  margin-bottom: 4rem;
+  box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.05);
+  border-radius: 1.6rem;
+}
+.input-wrapper {
+  position: relative;
+}
+
+.legend-feild {
+  border: var(--input-border);
+  border-radius: 0.4rem;
+  position: relative;
+  margin: 1rem;
+  padding: 1.2rem 1rem;
+}
+
+.label-legend {
+  position: absolute;
+  font-size: 1.3rem;
+  font-weight: 400;
+  top: 0.2ex;
+  z-index: 1;
+  left: 1.9em;
+  background-color: white;
+  padding: 0 5px;
+}
+.form-heading {
+  color: #e9513e;
+  font-size: 1.8rem;
+  font-weight: 500;
+  margin-bottom: 0.2rem;
+}
+.form-para {
+  color: #898787;
+  font-size: 1.4rem;
+  font-weight: 400;
+}
+.switch-button {
+  color: #000;
+  font-size: 1.3rem;
+  font-weight: 400;
+}
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+.table-label {
+  font-size: 1.4rem;
+  font-weight: 500;
+  color: #000;
+}
+.table-form {
+  font-size: 1.4rem;
+}
+.table-tr td {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+.form-select {
+  --bs-form-select-bg-img: url(./assets/images/caret-down.svg);
+}
