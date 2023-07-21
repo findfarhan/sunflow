@@ -66,14 +66,14 @@ const Sidebar = () => {
 
   return (
     <>
-      <nav class="sidebar locked">
-        <div class="menu_container parent-menu-container">
-          <div class="menu_items ">
-            <ul class="menu_item mb-0">
-              <li class="item">
+      <nav className="sidebar locked">
+        <div className="menu_container parent-menu-container">
+          <div className="menu_items ">
+            <ul className="menu_item mb-0">
+              <li className="item">
                 <Link
                   to="/admin/activepage"
-                  class="link flex ps-4 py-3 link-admin sidebar-manu-link"
+                  className="link flex ps-4 py-3 link-admin sidebar-manu-link"
                 >
                   <svg
                     width="23"
@@ -100,10 +100,10 @@ const Sidebar = () => {
                 </Link>
               </li>
               <hr />
-              <li class="item">
+              <li className="item">
                 <Link
                   to="/admin/activepage"
-                  class="link flex ps-4 py-3 link-admin"
+                  className="link flex ps-4 py-3 link-admin"
                 >
                   <svg
                     width="21"
@@ -129,10 +129,10 @@ const Sidebar = () => {
                 </Link>
               </li>
               <hr />
-              <li class="item">
+              <li className="item">
                 <Link
                   to="/admin/issuePage"
-                  class="link flex ps-4 py-3 link-admin"
+                  className="link flex ps-4 py-3 link-admin"
                 >
                   <svg
                     width="20"
@@ -148,10 +148,10 @@ const Sidebar = () => {
                 </Link>
               </li>
               <hr />
-              <li class="item">
+              <li className="item">
                 <Link
                   to="/admin/activepage"
-                  class="link flex ps-4 py-3 link-admin"
+                  className="link flex ps-4 py-3 link-admin"
                 >
                   <svg
                     width="23"
@@ -178,11 +178,11 @@ const Sidebar = () => {
               </li>
             </ul>
             <hr />
-            <ul class="menu_item py-2">
-              <li class="item">
+            <ul className="menu_item py-2">
+              <li className="item">
                 <Link
                   to="/admin/activepage"
-                  class="link flex ps-4 py-3 link-admin"
+                  className="link flex ps-4 py-3 link-admin"
                 >
                   <svg
                     width="18"
@@ -213,11 +213,11 @@ const Sidebar = () => {
               </li>
             </ul>
             <hr />
-            <ul class="menu_item py-2">
-              <li class="item">
+            <ul className="menu_item py-2">
+              <li className="item">
                 <Link
                   to="/admin/activepage"
-                  class="link flex ps-4 py-3 link-admin"
+                  className="link flex ps-4 py-3 link-admin"
                 >
                   <svg
                     width="20"
@@ -248,11 +248,11 @@ const Sidebar = () => {
               </li>
             </ul>
             <hr />
-            <ul class="menu_item py-2">
-              <li class="item">
+            <ul className="menu_item py-2">
+              <li className="item">
                 <Link
                   to="/admin/activepage"
-                  class="link flex ps-4 py-3 link-admin"
+                  className="link flex ps-4 py-3 link-admin"
                 >
                   <svg
                     width="25"
@@ -283,11 +283,11 @@ const Sidebar = () => {
               </li>
             </ul>
             <hr />
-            <ul class="menu_item py-2">
-              <li class="item">
+            <ul className="menu_item py-2">
+              <li className="item">
                 <Link
                   to="/admin/activepage"
-                  class="link flex ps-4 py-3 link-admin"
+                  className="link flex ps-4 py-3 link-admin"
                 >
                   <svg
                     width="20"
@@ -320,11 +320,11 @@ const Sidebar = () => {
               </li>
             </ul>
             <hr />
-            <ul class="menu_item py-2">
-              <li class="item">
+            <ul className="menu_item py-2">
+              <li className="item">
                 <Link
                   to="/admin/activepage"
-                  class="link flex ps-4 py-3 link-admin"
+                  className="link flex ps-4 py-3 link-admin"
                 >
                   <svg
                     width="20"
@@ -358,11 +358,11 @@ const Sidebar = () => {
               </li>
             </ul>
             <hr />
-            <ul class="menu_item mb-0">
-              <li class="item">
+            <ul className="menu_item mb-0">
+              <li className="item">
                 <Link
                   to="/admin/activepage"
-                  class="link flex ps-4 py-3 link-admin"
+                  className="link flex ps-4 py-3 link-admin"
                 >
                   <svg
                     width="18"

@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import { tableData } from '../../DataUseForTable/TableData';
 import arrowUp from '../../assets/images/arrow-down.svg';
+import trash from '../../assets/images/trash.svg';
 
-const IssueTable = () => {
+const IssueTable = ({ usersAssignedToRole, setUsersAssignedToRole }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const recordPerPage = 2;
   const lastIndex = currentPage * recordPerPage;
   const firstIndex = (currentPage - 1) * recordPerPage;
-  const record = tableData.slice(firstIndex, lastIndex);
-  const totalPages = Math.ceil(tableData.length / recordPerPage);
+  const record = usersAssignedToRole.slice(firstIndex, lastIndex);
+  const totalPages = Math.ceil(usersAssignedToRole.length / recordPerPage);
 
   const handlePreviousPage = () => {
     if (currentPage > 1) {
@@ -20,6 +20,11 @@ const IssueTable = () => {
     if (currentPage < totalPages) {
       setCurrentPage(currentPage + 1);
     }
+  };
+  const handleRemoveUser = (index) => {
+    const updatedUsers = [...usersAssignedToRole];
+    updatedUsers.splice(index, 1);
+    setUsersAssignedToRole(updatedUsers);
   };
 
   useEffect(() => {
@@ -73,10 +78,10 @@ const IssueTable = () => {
           </tr>
         </thead>
         <tbody className="parent-menu-table">
-          {record.map((table) => (
+          {record.map((table, index) => (
             <tr
               className="table-tr align-items-center table-admin "
-              key={table.id}
+              key={index}
             >
               <td>
                 <input
@@ -91,7 +96,13 @@ const IssueTable = () => {
               <td className="table-form pt-4">{table.phone}</td>
               <td className="table-form pt-4">{table.role}</td>
               <td className="table-form pt-4">
-                <img src={table.trash} alt="" className="img-fluid" />
+                <img
+                  src={trash}
+                  alt=""
+                  className="img-fluid"
+                  style={{ cursor: 'pointer' }}
+                  onClick={() => handleRemoveUser(index)}
+                />
               </td>
             </tr>
           ))}
