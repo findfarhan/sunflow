@@ -8,45 +8,15 @@ const Sidebar = () => {
   const handlShow = () => {
     setShow(!show);
   };
-  useEffect(() => {
-    const sidebar = document.querySelector('.sidebar');
+  const [hovering, setHovering] = useState(false);
 
-    const toggleLock = () => {
-      sidebar.classList.toggle('locked');
-      if (!sidebar.classList.contains('locked')) {
-        sidebar.classList.add('hoverable');
-      } else {
-        sidebar.classList.remove('hoverable');
-      }
-    };
+  const handleMouseEnter = () => {
+    setHovering(false);
+  };
 
-    const hideSidebar = () => {
-      if (sidebar.classList.contains('hoverable')) {
-        sidebar.classList.add('close');
-      }
-    };
-
-    const showSidebar = () => {
-      if (sidebar.classList.contains('hoverable')) {
-        sidebar.classList.remove('close');
-      }
-    };
-
-    const toggleSidebar = () => {
-      sidebar.classList.toggle('close');
-    };
-
-    if (window.innerWidth < 800) {
-      sidebar.classList.add('close');
-      sidebar.classList.remove('locked');
-      sidebar.classList.remove('hoverable');
-    }
-
-    sidebar.addEventListener('click', toggleLock);
-    sidebar.addEventListener('mouseleave', hideSidebar);
-    sidebar.addEventListener('mouseenter', showSidebar);
-    sidebar.addEventListener('click', toggleSidebar);
-  }, []);
+  const handleMouseLeave = () => {
+    setHovering(true);
+  };
 
   useEffect(() => {
     let parentcontainer = document.querySelector('.parent-menu-container');
@@ -66,7 +36,15 @@ const Sidebar = () => {
 
   return (
     <>
-      <nav className="sidebar locked">
+      <nav
+        className="sidebar"
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+        style={{
+          width: hovering ? '70px' : '270px',
+          transition: 'width 0.3s ease',
+        }}
+      >
         <div className="menu_container parent-menu-container">
           <div className="menu_items ">
             <ul className="menu_item mb-0">

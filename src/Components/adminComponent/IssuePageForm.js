@@ -155,7 +155,7 @@ const IssuePageForm = () => {
                     Description
                   </label>
                   <textarea
-                    type="text"
+                    type="datetime-local"
                     rows={6}
                     class="form-control legend-feild  shadow-none"
                     id="title"
@@ -166,7 +166,7 @@ const IssuePageForm = () => {
                     Repaire Date
                   </label>
                   <input
-                    type="text"
+                    type="date"
                     class="form-control legend-feild  shadow-none"
                     id="date"
                   />

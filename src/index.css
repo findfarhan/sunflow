@@ -229,6 +229,9 @@ h2 {
 .form-select {
   --bs-form-select-bg-img: url(./assets/images/caret-down.svg);
 }
+.collapsed {
+  width: 80px;
+}
 
 /* Pre css */
 .flex {
