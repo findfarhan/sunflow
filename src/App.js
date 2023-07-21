@@ -4,6 +4,7 @@ import { Navigate } from 'react-router-dom';
 import Login from './screens/Login';
 import IssuePage from './screens/admin/IssuePage';
 import Required from './screens/admin/Required';
+import Dashboard from './screens/admin/Dashboard';
 const App = () => {
   return (
     <>
@@ -16,6 +17,7 @@ const App = () => {
           <Route path="admin" element={<Required />}>
             <Route path="" element={<Navigate replace to="issuePage" />} />
             <Route path="issuePage" element={<IssuePage />} />
+            <Route path="activepage" element={<Dashboard />} />
           </Route>
         </Routes>
       </main>

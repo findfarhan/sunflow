@@ -1,10 +1,11 @@
-import { Outlet, useParams } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
+import { Outlet } from 'react-router-dom';
+import Sidebar from './Sidebar';
+import { useNavigate } from 'react-router-dom';
 
-import SideMenu from './SideMenu';
 const Required = () => {
   const [isDesktop, setIsDesktop] = useState(false);
-
+  let navigate = useNavigate();
   useEffect(() => {
     const handleResize = () => {
       setIsDesktop(window.innerWidth > 1530);
@@ -18,15 +19,25 @@ const Required = () => {
     };
   }, []);
   const containerClassName = isDesktop ? 'container' : 'container-fluid';
-  return (
-    <>
-      <div>
+
+  let isLogin = localStorage.getItem('isLogin');
+
+  if (!isLogin) {
+    navigate('/');
+  } else {
+    return (
+      <>
         <header className="header__color"></header>
-        <div className={`${containerClassName} side-container`}>
-          <Outlet />
+        <div className="d-flex">
+          <div>
+            <Sidebar />
+          </div>
+          <div className={`${containerClassName} side-container`}>
+            <Outlet />
+          </div>
         </div>
-      </div>
-    </>
-  );
+      </>
+    );
+  }
 };
 export default Required;

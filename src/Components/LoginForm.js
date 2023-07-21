@@ -1,10 +1,17 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import Message from './Message';
 
 const LoginForm = () => {
+  const [message, setMessage] = useState('');
+  const nameRef = useRef();
+  const passRef = useRef();
+  const checkref = useRef();
+
   const navigate = useNavigate();
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
+  const [isChecked, setIsChecked] = useState(true);
 
   const handlePasswordChange = (event) => {
     setPassword(event.target.value);
@@ -13,12 +20,34 @@ const LoginForm = () => {
   const toggleShowPassword = () => {
     setShowPassword(!showPassword);
   };
-  const handleButton = () => {
-    navigate('/admin');
+
+  const handleCheckbox = (e) => {
+    setIsChecked(e.target.checked);
+    console.log(isChecked);
+  };
+  localStorage.setItem('email', 'admin@gmail.com');
+  localStorage.setItem('password', '12345');
+  localStorage.setItem('isChecked', isChecked);
+
+  let getName = localStorage.getItem('email');
+  let getPassword = localStorage.getItem('password');
+
+  const handleSubmit = () => {
+    const userName = nameRef.current.value;
+    const password1 = passRef.current.value;
+
+    if (getName == userName && getPassword == password1) {
+      navigate('/admin/issuePage');
+      localStorage.setItem('isLogin', 1);
+    } else {
+      console.log('error');
+      setMessage("Email or password doesn't exist");
+    }
   };
   return (
     <>
-      <form action="">
+      {message ? <Message message={message}>{message}</Message> : ''}
+      <form action="" onSubmit={handleSubmit}>
         <div className="mb-5 input-with-icon">
           <svg
             width="15"
@@ -38,6 +67,7 @@ const LoginForm = () => {
             type="text"
             className="form-control input-feild shadow-none"
             placeholder="Username"
+            ref={nameRef}
           />
         </div>
         <div className="mb-5 position-relative input-with-icon">
@@ -60,6 +90,7 @@ const LoginForm = () => {
             type={showPassword ? 'text' : 'password'}
             value={password}
             onChange={handlePasswordChange}
+            ref={passRef}
           />
           <div
             onClick={toggleShowPassword}
@@ -100,6 +131,9 @@ const LoginForm = () => {
             className="form-check-input shadow-none"
             type="checkbox"
             value=""
+            ref={checkref}
+            checked={isChecked}
+            onChange={handleCheckbox}
             id="defaultCheck1"
           />
           <label
@@ -110,7 +144,7 @@ const LoginForm = () => {
           </label>
         </div>
         <div className="d-grid">
-          <button className="form-button" onClick={handleButton}>
+          <button className="form-button" type="submit">
             Login
           </button>
         </div>

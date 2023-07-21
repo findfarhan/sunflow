@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { tableData } from '../../DataUseForTable/TableData';
 import arrowUp from '../../assets/images/arrow-down.svg';
 
@@ -22,9 +22,21 @@ const IssueTable = () => {
     }
   };
 
-  const handlePageChange = (pageNumber) => {
-    setCurrentPage(pageNumber);
-  };
+  useEffect(() => {
+    let parentcontainer = document.querySelector('.parent-menu-table');
+    let linkadmin = document.querySelectorAll('.table-admin');
+
+    parentcontainer.addEventListener('click', function (e) {
+      let click = e.target.closest('.table-admin');
+
+      if (!click) return;
+
+      linkadmin.forEach((t) => {
+        t.classList.remove('table-manu-link');
+      });
+      click.classList.add('table-manu-link');
+    });
+  });
   return (
     <>
       <table class="table table-hover">
@@ -60,9 +72,12 @@ const IssueTable = () => {
             <th scope="col"></th>
           </tr>
         </thead>
-        <tbody>
+        <tbody className="parent-menu-table">
           {record.map((table) => (
-            <tr className="table-tr align-items-center" key={table.id}>
+            <tr
+              className="table-tr align-items-center table-admin "
+              key={table.id}
+            >
               <td>
                 <input
                   className="form-check-input input-table-feild shadow-none mt-2 me-3"
@@ -81,67 +96,50 @@ const IssueTable = () => {
             </tr>
           ))}
         </tbody>
-        <div className="d-flex justify-content-center align-items-center">
-          <div className="page-item">
-            <a
-              class="page-link"
-              aria-label="Previous"
-              onClick={handlePreviousPage}
-            >
-              <span aria-hidden="true">
-                <svg
-                  width="22"
-                  height="22"
-                  viewBox="0 0 22 22"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M11 7L7 11M7 11L11 15M7 11H15M21 11C21 16.5228 16.5228 21 11 21C5.47715 21 1 16.5228 1 11C1 5.47715 5.47715 1 11 1C16.5228 1 21 5.47715 21 11Z"
-                    stroke="#D75D39"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                </svg>
-              </span>
-            </a>
-          </div>
-          {Array.from({ length: totalPages }).map((_, index) => (
-            <div className="page-item" key={index}>
-              <a
-                class={`page-link  mx-2 ${
-                  currentPage === index + 1 ? 'page-num' : 'page-num1'
-                }`}
-                onClick={() => handlePageChange(index + 1)}
-              >
-                {index + 1}
-              </a>
-            </div>
-          ))}
-          <div className="page-item">
-            <a class="page-link" aria-label="Next" onClick={handleNextPage}>
-              <span aria-hidden="true">
-                <svg
-                  width="22"
-                  height="22"
-                  viewBox="0 0 22 22"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M11 15L15 11M15 11L11 7M15 11L7 11M1 11C1 5.47715 5.47715 0.999999 11 0.999999C16.5228 1 21 5.47715 21 11C21 16.5228 16.5228 21 11 21C5.47715 21 1 16.5228 1 11Z"
-                    stroke="#D75D39"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                </svg>
-              </span>
-            </a>
-          </div>
-        </div>
       </table>
+      <div className="d-flex justify-content-end align-items-center pt-4 ">
+        <div className="me-5 record-font">
+          Rows per page : {recordPerPage}{' '}
+          <svg
+            width="15"
+            height="15"
+            viewBox="0 0 12 7"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            className="ms-3"
+          >
+            <path
+              d="M1.79297 0C1.16016 0 0.84375 0.773438 1.30078 1.23047L5.80078 5.73047C6.08203 6.01172 6.53906 6.01172 6.82031 5.73047L11.3203 1.23047C11.7773 0.773438 11.4609 0 10.8281 0H1.79297Z"
+              fill="#666666"
+            />
+          </svg>
+        </div>
+        <div className="mx-5 record-font">1-1 of {totalPages}</div>
+        <div className="page-item ms-5" style={{ cursor: 'pointer' }}>
+          <a
+            class="page-link"
+            aria-label="Previous"
+            onClick={handlePreviousPage}
+          >
+            <span aria-hidden="true">
+              <i
+                class="fa-solid fa-chevron-left"
+                style={{ color: '#e7463f' }}
+              ></i>
+            </span>
+          </a>
+        </div>
+        <div className="page-item ms-5 me-3" style={{ cursor: 'pointer' }}>
+          <a class="page-link" aria-label="Next" onClick={handleNextPage}>
+            <span aria-hidden="true">
+              <i
+                class="fa-solid fa-chevron-right"
+                style={{ color: '#e7463f' }}
+              ></i>
+            </span>
+          </a>
+        </div>
+      </div>
     </>
   );
 };

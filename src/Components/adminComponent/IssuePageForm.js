@@ -21,20 +21,23 @@ const IssuePageForm = () => {
                 <label class="form-label label-legend">Priority</label>
                 <select
                   type="text"
-                  className="form-select legend-feild  shadow-none"
+                  className="form-select legend-feild select-feild  shadow-none"
                 >
-                  <option value="Semester"></option>
-                  <option value="Yearly">Yearly</option>
+                  <option value=""></option>
+                  <option value="">High</option>
+                  <option value="">Medium</option>
+                  <option value="">Low</option>
                 </select>
               </div>
               <div className="col-md-3 mb-3 input-wrapper">
                 <label class="form-label label-legend">DC Switch status</label>
                 <select
                   type="text"
-                  className="form-select legend-feild  shadow-none"
+                  className="form-select legend-feild  select-feild shadow-none"
                 >
-                  <option value="Semester"></option>
-                  <option value="Yearly">Yearly</option>
+                  <option value=""></option>
+                  <option value="">On</option>
+                  <option value="">Off</option>
                 </select>
               </div>
               <div className="col-md-3 mb-3 input-wrapper ">
@@ -42,10 +45,11 @@ const IssuePageForm = () => {
 
                 <select
                   type="text"
-                  className="form-select legend-feild  shadow-none"
+                  className="form-select legend-feild select-feild shadow-none"
                 >
-                  <option value="Semester"></option>
-                  <option value="Yearly">Yearly</option>
+                  <option value=""></option>
+                  <option value="">Active</option>
+                  <option value="">Inactive</option>
                 </select>
               </div>
             </div>
@@ -127,20 +131,23 @@ const IssuePageForm = () => {
             <label class="form-label label-legend">Select Role</label>
             <select
               type="text"
-              className="form-select legend-feild  shadow-none"
+              className="form-select legend-feild select-feild shadow-none"
             >
-              <option value="Semester"></option>
-              <option value="Yearly">Yearly</option>
+              <option value=""></option>
+              <option value="">Admin</option>
+              <option value="">Standard User</option>
             </select>
           </div>
           <div className="col-md-5 mb-3 input-wrapper">
             <label class="form-label label-legend">Select User</label>
             <select
               type="text"
-              className="form-select legend-feild  shadow-none"
+              className="form-select legend-feild select-feild shadow-none"
             >
-              <option value="Semester"></option>
-              <option value="Yearly">Yearly</option>
+              <option value=""></option>
+              <option value="">John</option>
+              <option value="">Jacob</option>
+              <option value="">Jannifer</option>
             </select>
           </div>
           <div className="col-md-2 pt-4">

@@ -33,4 +33,12 @@ export const tableData = [
     phone: '123 - 456 - 7890',
     role: 'Admin User',
   },
+  {
+    id: 5,
+    name: 'Joe Abraham',
+    email: 'Joe.Abraham@joeabraham.com',
+    trash: trash,
+    phone: '123 - 456 - 7890',
+    role: 'Admin User',
+  },
 ];
