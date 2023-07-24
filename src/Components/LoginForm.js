@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Message from './Message';
 
@@ -6,12 +6,11 @@ const LoginForm = () => {
   const [message, setMessage] = useState('');
   const nameRef = useRef();
   const passRef = useRef();
-  const checkref = useRef();
 
   const navigate = useNavigate();
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
-  const [isChecked, setIsChecked] = useState(true);
+  const [isChecked, setIsChecked] = useState(false);
 
   const handlePasswordChange = (event) => {
     setPassword(event.target.value);
@@ -21,29 +20,51 @@ const LoginForm = () => {
     setShowPassword(!showPassword);
   };
 
+  useEffect(() => {
+    const storedIsChecked = localStorage.getItem('isChecked');
+    setIsChecked(storedIsChecked === 'true');
+  }, []);
+
   const handleCheckbox = (e) => {
     setIsChecked(e.target.checked);
-    console.log(isChecked);
   };
+
+  const storeLoginStatus = (isLoggedIn) => {
+    localStorage.setItem('isLogin', isLoggedIn ? '1' : '0');
+    localStorage.setItem('isChecked', isLoggedIn ? 'true' : 'false');
+  };
+
   localStorage.setItem('email', 'admin@gmail.com');
   localStorage.setItem('password', '12345');
-  localStorage.setItem('isChecked', isChecked);
-
-  let getName = localStorage.getItem('email');
-  let getPassword = localStorage.getItem('password');
-
-  const handleSubmit = () => {
+  const authenticateUser = () => {
+    const getName = localStorage.getItem('email');
+    const getPassword = localStorage.getItem('password');
     const userName = nameRef.current.value;
     const password1 = passRef.current.value;
 
-    if (getName == userName && getPassword == password1) {
+    if (getName === userName && getPassword === password1) {
+      storeLoginStatus(isChecked);
       navigate('/admin/issuePage');
-      localStorage.setItem('isLogin', 1);
     } else {
-      console.log('error');
-      setMessage("Email or password doesn't exist");
+      if (getName != userName && getPassword != password1) {
+        setMessage("Email or password doesn't exist");
+      } else {
+        console.log('error');
+      }
     }
   };
+
+  useEffect(() => {
+    if (isChecked) {
+      authenticateUser();
+    }
+  }, [isChecked]);
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    authenticateUser();
+  };
+
   return (
     <>
       {message ? <Message message={message}>{message}</Message> : ''}
@@ -131,7 +152,6 @@ const LoginForm = () => {
             className="form-check-input shadow-none"
             type="checkbox"
             value=""
-            ref={checkref}
             checked={isChecked}
             onChange={handleCheckbox}
             id="defaultCheck1"

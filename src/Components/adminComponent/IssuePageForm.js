@@ -3,9 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import IssueTable from './IssueTable';
 const IssuePageForm = () => {
   const navigate = useNavigate();
-  const [isChecked, setIsChecked] = useState(
-    localStorage.getItem('isChecked') === 'true'
-  );
+
   const [selectedRole, setSelectedRole] = useState(
     localStorage.getItem('selectedRole') || ''
   );
@@ -14,19 +12,12 @@ const IssuePageForm = () => {
     JSON.parse(localStorage.getItem('usersAssignedToRole')) || []
   );
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      if (!isChecked) {
-        localStorage.removeItem('isLogin');
-        navigate('/');
-      }
-    }, 60000);
-
-    return () => clearInterval(interval);
-  }, [isChecked, navigate]);
+  const isChecked = localStorage.getItem('isChecked') === 'true';
 
   const logoutHandle = () => {
-    localStorage.removeItem('isLogin');
+    if (!isChecked) {
+      localStorage.removeItem('isLogin');
+    }
     navigate('/');
   };
 
